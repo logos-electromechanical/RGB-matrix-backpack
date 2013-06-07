@@ -15,3 +15,11 @@
 *.exe
 *.out
 *.app
+
+# Eagle backup files
+*.b#*
+*.s#*
+
+# Manufacturing directories (deep dark secrets go here)
+mfg/
+gerbers/
