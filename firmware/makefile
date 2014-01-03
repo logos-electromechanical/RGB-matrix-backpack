@@ -25,8 +25,8 @@ MCU = attiny2313
 F_CPU =  8000000
 
 # Target file name (without extension).
-TARGET = rgb_backpack_pwm
-#TARGET = rgb_backpack
+#TARGET = rgb_backpack_pwm
+TARGET = rgb_backpack
 
 # Programming hardware: type avrdude -c ?
 # to get a full listing.
