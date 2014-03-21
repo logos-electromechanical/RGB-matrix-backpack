@@ -2,7 +2,7 @@
 #include <Wire.h>
 
 //#define TARGET1  0x41
-#define TARGET  0x41
+#define TARGET  0x47
 #define DEL      250
 
 void setup (void) {

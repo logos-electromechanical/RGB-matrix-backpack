@@ -186,6 +186,7 @@ void shiftCmd (uint8_t cmd) {
 	DRV_PORT |= _BV(DRV_CS);		// end transmission
 	return;
 }
+
 void shiftBuffer (void) {
 
 	uint8_t i, j, val;
