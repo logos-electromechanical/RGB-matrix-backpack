@@ -1,0 +1,1457 @@
+
+PWM-firmware.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  000007ec  00000880  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000007ec  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000018c  00800102  00800102  00000882  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000882  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  000008b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000004f5  00000000  00000000  000008da  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000231  00000000  00000000  00000dcf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000214  00000000  00000000  00001000  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  0000013c  00000000  00000000  00001214  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001b4  00000000  00000000  00001350  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000761  00000000  00000000  00001504  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000060  00000000  00000000  00001c65  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1d c0       	rjmp	.+58     	; 0x3c <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
+   4:	36 c0       	rjmp	.+108    	; 0x72 <__bad_interrupt>
+   6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
+   8:	34 c0       	rjmp	.+104    	; 0x72 <__bad_interrupt>
+   a:	33 c0       	rjmp	.+102    	; 0x72 <__bad_interrupt>
+   c:	32 c0       	rjmp	.+100    	; 0x72 <__bad_interrupt>
+   e:	31 c0       	rjmp	.+98     	; 0x72 <__bad_interrupt>
+  10:	30 c0       	rjmp	.+96     	; 0x72 <__bad_interrupt>
+  12:	2f c0       	rjmp	.+94     	; 0x72 <__bad_interrupt>
+  14:	2e c0       	rjmp	.+92     	; 0x72 <__bad_interrupt>
+  16:	2d c0       	rjmp	.+90     	; 0x72 <__bad_interrupt>
+  18:	2c c0       	rjmp	.+88     	; 0x72 <__bad_interrupt>
+  1a:	2b c0       	rjmp	.+86     	; 0x72 <__bad_interrupt>
+  1c:	2a c0       	rjmp	.+84     	; 0x72 <__bad_interrupt>
+  1e:	29 c0       	rjmp	.+82     	; 0x72 <__bad_interrupt>
+  20:	28 c0       	rjmp	.+80     	; 0x72 <__bad_interrupt>
+  22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
+  24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
+  26:	25 c0       	rjmp	.+74     	; 0x72 <__bad_interrupt>
+  28:	24 c0       	rjmp	.+72     	; 0x72 <__bad_interrupt>
+  2a:	23 c0       	rjmp	.+70     	; 0x72 <__bad_interrupt>
+  2c:	22 c0       	rjmp	.+68     	; 0x72 <__bad_interrupt>
+  2e:	21 c0       	rjmp	.+66     	; 0x72 <__bad_interrupt>
+  30:	20 c0       	rjmp	.+64     	; 0x72 <__bad_interrupt>
+  32:	1f c0       	rjmp	.+62     	; 0x72 <__bad_interrupt>
+  34:	1e c0       	rjmp	.+60     	; 0x72 <__bad_interrupt>
+  36:	1d c0       	rjmp	.+58     	; 0x72 <__bad_interrupt>
+  38:	1c c0       	rjmp	.+56     	; 0x72 <__bad_interrupt>
+  3a:	1c c0       	rjmp	.+56     	; 0x74 <__vector_29>
+
+0000003c <__ctors_end>:
+  3c:	11 24       	eor	r1, r1
+  3e:	1f be       	out	0x3f, r1	; 63
+  40:	cf ef       	ldi	r28, 0xFF	; 255
+  42:	d2 e0       	ldi	r29, 0x02	; 2
+  44:	de bf       	out	0x3e, r29	; 62
+  46:	cd bf       	out	0x3d, r28	; 61
+
+00000048 <__do_copy_data>:
+  48:	11 e0       	ldi	r17, 0x01	; 1
+  4a:	a0 e0       	ldi	r26, 0x00	; 0
+  4c:	b1 e0       	ldi	r27, 0x01	; 1
+  4e:	ec ee       	ldi	r30, 0xEC	; 236
+  50:	f7 e0       	ldi	r31, 0x07	; 7
+  52:	02 c0       	rjmp	.+4      	; 0x58 <__do_copy_data+0x10>
+  54:	05 90       	lpm	r0, Z+
+  56:	0d 92       	st	X+, r0
+  58:	a2 30       	cpi	r26, 0x02	; 2
+  5a:	b1 07       	cpc	r27, r17
+  5c:	d9 f7       	brne	.-10     	; 0x54 <__do_copy_data+0xc>
+
+0000005e <__do_clear_bss>:
+  5e:	22 e0       	ldi	r18, 0x02	; 2
+  60:	a2 e0       	ldi	r26, 0x02	; 2
+  62:	b1 e0       	ldi	r27, 0x01	; 1
+  64:	01 c0       	rjmp	.+2      	; 0x68 <.do_clear_bss_start>
+
+00000066 <.do_clear_bss_loop>:
+  66:	1d 92       	st	X+, r1
+
+00000068 <.do_clear_bss_start>:
+  68:	ae 38       	cpi	r26, 0x8E	; 142
+  6a:	b2 07       	cpc	r27, r18
+  6c:	e1 f7       	brne	.-8      	; 0x66 <.do_clear_bss_loop>
+  6e:	b1 d1       	rcall	.+866    	; 0x3d2 <main>
+  70:	bb c3       	rjmp	.+1910   	; 0x7e8 <_exit>
+
+00000072 <__bad_interrupt>:
+  72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+
+00000074 <__vector_29>:
+void inline doTick (void);
+
+uint16_t pwmCtr;
+uint8_t stopFlag = 1;
+
+ISR(TWI_SLAVE_vect) {
+  74:	1f 92       	push	r1
+  76:	0f 92       	push	r0
+  78:	0f b6       	in	r0, 0x3f	; 63
+  7a:	0f 92       	push	r0
+  7c:	11 24       	eor	r1, r1
+  7e:	8f 93       	push	r24
+  80:	af 93       	push	r26
+  82:	bf 93       	push	r27
+  84:	ef 93       	push	r30
+  86:	ff 93       	push	r31
+	//volatile uint8_t dummy;
+	
+	if (TWSSRA & _BV(TWDIF)) {						// if we have a data value, put it in the buffer
+  88:	80 91 a3 00 	lds	r24, 0x00A3
+  8c:	87 fd       	sbrc	r24, 7
+  8e:	57 c0       	rjmp	.+174    	; 0x13e <__vector_29+0xca>
+		inbuf[inbufPtr] = TWSD;						// read in the data
+		TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);			// ACK the byte
+		inbufPtr++;									// increment the buffer pointer
+	} 
+	if (TWSSRA & _BV(TWASIF)) {
+  90:	80 91 a3 00 	lds	r24, 0x00A3
+  94:	86 ff       	sbrs	r24, 6
+  96:	10 c0       	rjmp	.+32     	; 0xb8 <__vector_29+0x44>
+		if (TWSSRA & _BV(TWAS)) {					// if we have an address, reset the input buffer
+  98:	80 91 a3 00 	lds	r24, 0x00A3
+  9c:	80 ff       	sbrs	r24, 0
+  9e:	39 c0       	rjmp	.+114    	; 0x112 <__vector_29+0x9e>
+			TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);		// ACK the byte; this is first since all our house keeping takes less 
+  a0:	83 e0       	ldi	r24, 0x03	; 3
+  a2:	80 93 a4 00 	sts	0x00A4, r24
+													// time than getting our next byte, so we should do it first to speed the transaction
+			TWSSRA |= _BV(TWASIF);					// clear the address match flag
+  a6:	80 91 a3 00 	lds	r24, 0x00A3
+  aa:	80 64       	ori	r24, 0x40	; 64
+  ac:	80 93 a3 00 	sts	0x00A3, r24
+			if (stopFlag) {							// if the last interrupt was caused by a stop condition, clear the buffer
+  b0:	80 91 00 01 	lds	r24, 0x0100
+  b4:	81 11       	cpse	r24, r1
+  b6:	54 c0       	rjmp	.+168    	; 0x160 <__vector_29+0xec>
+			TWSSRA |= _BV(TWASIF);					// clear the address match flag
+			if (inbufPtr) cmd = inbuf[0];
+			stopFlag++;
+		}
+	} 
+	if ((TWSSRA & _BV(TWBE)) || 
+  b8:	80 91 a3 00 	lds	r24, 0x00A3
+  bc:	82 fd       	sbrc	r24, 2
+  be:	04 c0       	rjmp	.+8      	; 0xc8 <__vector_29+0x54>
+		(TWSSRA & _BV(TWC))) {						// if we have an error, reset the input buffer and remove the error
+  c0:	80 91 a3 00 	lds	r24, 0x00A3
+			TWSSRA |= _BV(TWASIF);					// clear the address match flag
+			if (inbufPtr) cmd = inbuf[0];
+			stopFlag++;
+		}
+	} 
+	if ((TWSSRA & _BV(TWBE)) || 
+  c4:	83 ff       	sbrs	r24, 3
+  c6:	1b c0       	rjmp	.+54     	; 0xfe <__vector_29+0x8a>
+		(TWSSRA & _BV(TWC))) {						// if we have an error, reset the input buffer and remove the error
+		inbufPtr = 0;
+  c8:	10 92 cd 01 	sts	0x01CD, r1
+  cc:	88 ec       	ldi	r24, 0xC8	; 200
+  ce:	e3 e0       	ldi	r30, 0x03	; 3
+  d0:	f1 e0       	ldi	r31, 0x01	; 1
+  d2:	df 01       	movw	r26, r30
+  d4:	1d 92       	st	X+, r1
+  d6:	8a 95       	dec	r24
+  d8:	e9 f7       	brne	.-6      	; 0xd4 <__vector_29+0x60>
+		clearBuf(inbuf, (uint8_t)BUFLEN);
+		stopFlag++;
+  da:	80 91 00 01 	lds	r24, 0x0100
+  de:	8f 5f       	subi	r24, 0xFF	; 255
+  e0:	80 93 00 01 	sts	0x0100, r24
+		TWSSRA |= _BV(TWBE);						// reset the bus error
+  e4:	80 91 a3 00 	lds	r24, 0x00A3
+  e8:	84 60       	ori	r24, 0x04	; 4
+  ea:	80 93 a3 00 	sts	0x00A3, r24
+		TWSSRA |= _BV(TWC);							// reset the bus collision
+  ee:	80 91 a3 00 	lds	r24, 0x00A3
+  f2:	88 60       	ori	r24, 0x08	; 8
+  f4:	80 93 a3 00 	sts	0x00A3, r24
+		TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);			// ACK the byte
+  f8:	83 e0       	ldi	r24, 0x03	; 3
+  fa:	80 93 a4 00 	sts	0x00A4, r24
+	}
+}
+  fe:	ff 91       	pop	r31
+ 100:	ef 91       	pop	r30
+ 102:	bf 91       	pop	r27
+ 104:	af 91       	pop	r26
+ 106:	8f 91       	pop	r24
+ 108:	0f 90       	pop	r0
+ 10a:	0f be       	out	0x3f, r0	; 63
+ 10c:	0f 90       	pop	r0
+ 10e:	1f 90       	pop	r1
+ 110:	18 95       	reti
+				inbufPtr = 0;
+				clearBuf(inbuf, (uint8_t)BUFLEN);
+				stopFlag = 0;
+			}
+		} else {									// if we have a stop condition, set the command to the first byte
+			TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);		// ACK the byte
+ 112:	83 e0       	ldi	r24, 0x03	; 3
+ 114:	80 93 a4 00 	sts	0x00A4, r24
+			TWSSRA |= _BV(TWASIF);					// clear the address match flag
+ 118:	80 91 a3 00 	lds	r24, 0x00A3
+ 11c:	80 64       	ori	r24, 0x40	; 64
+ 11e:	80 93 a3 00 	sts	0x00A3, r24
+			if (inbufPtr) cmd = inbuf[0];
+ 122:	80 91 cd 01 	lds	r24, 0x01CD
+ 126:	88 23       	and	r24, r24
+ 128:	21 f0       	breq	.+8      	; 0x132 <__vector_29+0xbe>
+ 12a:	80 91 03 01 	lds	r24, 0x0103
+ 12e:	80 93 02 01 	sts	0x0102, r24
+			stopFlag++;
+ 132:	80 91 00 01 	lds	r24, 0x0100
+ 136:	8f 5f       	subi	r24, 0xFF	; 255
+ 138:	80 93 00 01 	sts	0x0100, r24
+ 13c:	bd cf       	rjmp	.-134    	; 0xb8 <__vector_29+0x44>
+
+ISR(TWI_SLAVE_vect) {
+	//volatile uint8_t dummy;
+	
+	if (TWSSRA & _BV(TWDIF)) {						// if we have a data value, put it in the buffer
+		inbuf[inbufPtr] = TWSD;						// read in the data
+ 13e:	80 91 a0 00 	lds	r24, 0x00A0
+ 142:	e0 91 cd 01 	lds	r30, 0x01CD
+ 146:	f0 e0       	ldi	r31, 0x00	; 0
+ 148:	ed 5f       	subi	r30, 0xFD	; 253
+ 14a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 14c:	80 83       	st	Z, r24
+		TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);			// ACK the byte
+ 14e:	83 e0       	ldi	r24, 0x03	; 3
+ 150:	80 93 a4 00 	sts	0x00A4, r24
+		inbufPtr++;									// increment the buffer pointer
+ 154:	80 91 cd 01 	lds	r24, 0x01CD
+ 158:	8f 5f       	subi	r24, 0xFF	; 255
+ 15a:	80 93 cd 01 	sts	0x01CD, r24
+ 15e:	98 cf       	rjmp	.-208    	; 0x90 <__vector_29+0x1c>
+		if (TWSSRA & _BV(TWAS)) {					// if we have an address, reset the input buffer
+			TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);		// ACK the byte; this is first since all our house keeping takes less 
+													// time than getting our next byte, so we should do it first to speed the transaction
+			TWSSRA |= _BV(TWASIF);					// clear the address match flag
+			if (stopFlag) {							// if the last interrupt was caused by a stop condition, clear the buffer
+				inbufPtr = 0;
+ 160:	10 92 cd 01 	sts	0x01CD, r1
+ 164:	88 ec       	ldi	r24, 0xC8	; 200
+ 166:	e3 e0       	ldi	r30, 0x03	; 3
+ 168:	f1 e0       	ldi	r31, 0x01	; 1
+ 16a:	df 01       	movw	r26, r30
+ 16c:	1d 92       	st	X+, r1
+ 16e:	8a 95       	dec	r24
+ 170:	e9 f7       	brne	.-6      	; 0x16c <__vector_29+0xf8>
+				clearBuf(inbuf, (uint8_t)BUFLEN);
+				stopFlag = 0;
+ 172:	10 92 00 01 	sts	0x0100, r1
+ 176:	a0 cf       	rjmp	.-192    	; 0xb8 <__vector_29+0x44>
+
+00000178 <getAddress>:
+	//uint8_t pb = 0;
+	uint8_t result = 0x81;	// set the top bit of the address in order to avoid stomping on the general call address
+							// set the bottom bit so that it responds to the general call address 
+
+	// set all lines to inputs
+	DDRA = 0;
+ 178:	1a ba       	out	0x1a, r1	; 26
+	DDRB = 0;
+ 17a:	17 ba       	out	0x17, r1	; 23
+	
+	// turn on the pull-ups for all address lines in 
+	// order to force a default address
+	PUEA = 0xa5;
+ 17c:	85 ea       	ldi	r24, 0xA5	; 165
+ 17e:	80 93 63 00 	sts	0x0063, r24
+	PUEB = 0x05;
+ 182:	85 e0       	ldi	r24, 0x05	; 5
+ 184:	80 93 62 00 	sts	0x0062, r24
+	// read the input ports
+	//pa = PINA;
+	//pb = PINB;
+	
+	// map address pins into an address
+	if (PINA & _BV(5)) result += 0x02;	// address bit 0
+ 188:	cd 99       	sbic	0x19, 5	; 25
+ 18a:	11 c0       	rjmp	.+34     	; 0x1ae <getAddress+0x36>
+ 18c:	95 e8       	ldi	r25, 0x85	; 133
+
+uint8_t getAddress (void) {
+
+	//uint8_t pa = 0;
+	//uint8_t pb = 0;
+	uint8_t result = 0x81;	// set the top bit of the address in order to avoid stomping on the general call address
+ 18e:	81 e8       	ldi	r24, 0x81	; 129
+	//pa = PINA;
+	//pb = PINB;
+	
+	// map address pins into an address
+	if (PINA & _BV(5)) result += 0x02;	// address bit 0
+	if (PINA & _BV(7)) result += 0x04;	// address bit 1
+ 190:	cf 99       	sbic	0x19, 7	; 25
+ 192:	11 c0       	rjmp	.+34     	; 0x1b6 <getAddress+0x3e>
+	if (PINA & _BV(0)) result += 0x08;	// address bit 2
+ 194:	c8 99       	sbic	0x19, 0	; 25
+ 196:	88 5f       	subi	r24, 0xF8	; 248
+	if (PINB & _BV(2)) result += 0x10;	// address bit 3
+ 198:	b2 99       	sbic	0x16, 2	; 22
+ 19a:	80 5f       	subi	r24, 0xF0	; 240
+	if (PINA & _BV(2)) result += 0x20;	// address bit 4
+ 19c:	ca 99       	sbic	0x19, 2	; 25
+ 19e:	80 5e       	subi	r24, 0xE0	; 224
+	if (PINB & _BV(0)) result += 0x40;	// address bit 5
+ 1a0:	b0 99       	sbic	0x16, 0	; 22
+ 1a2:	80 5c       	subi	r24, 0xC0	; 192
+	
+	// turn off the pull-ups
+	PUEA = 0;
+ 1a4:	10 92 63 00 	sts	0x0063, r1
+	PUEB = 0;
+ 1a8:	10 92 62 00 	sts	0x0062, r1
+	
+	return result;
+}
+ 1ac:	08 95       	ret
+ 1ae:	97 e8       	ldi	r25, 0x87	; 135
+	// read the input ports
+	//pa = PINA;
+	//pb = PINB;
+	
+	// map address pins into an address
+	if (PINA & _BV(5)) result += 0x02;	// address bit 0
+ 1b0:	83 e8       	ldi	r24, 0x83	; 131
+	if (PINA & _BV(7)) result += 0x04;	// address bit 1
+ 1b2:	cf 9b       	sbis	0x19, 7	; 25
+ 1b4:	ef cf       	rjmp	.-34     	; 0x194 <getAddress+0x1c>
+ 1b6:	89 2f       	mov	r24, r25
+ 1b8:	ed cf       	rjmp	.-38     	; 0x194 <getAddress+0x1c>
+
+000001ba <init>:
+	PUEB = 0;
+	
+	return result;
+}
+
+void init (uint8_t * in, uint8_t inlen, uint8_t * out, uint8_t outlen, uint8_t address) {
+ 1ba:	ef 92       	push	r14
+ 1bc:	ff 92       	push	r15
+ 1be:	0f 93       	push	r16
+ 1c0:	cf 93       	push	r28
+ 1c2:	df 93       	push	r29
+ 1c4:	1f 92       	push	r1
+ 1c6:	cd b7       	in	r28, 0x3d	; 61
+ 1c8:	de b7       	in	r29, 0x3e	; 62
+ 1ca:	7a 01       	movw	r14, r20
+	
+	DDRA = 0xaf;	// set everything except the TWI pins to output 
+ 1cc:	3f ea       	ldi	r19, 0xAF	; 175
+ 1ce:	3a bb       	out	0x1a, r19	; 26
+	DDRB = 0x07;	// set everything to outputs
+ 1d0:	37 e0       	ldi	r19, 0x07	; 7
+ 1d2:	37 bb       	out	0x17, r19	; 23
+	
+	// set up PWM outputs
+	TCCR1A = _BV(COM1A0) | _BV(COM1A1) | _BV(COM1B0) | _BV(COM1B1) | _BV(WGM10);
+ 1d4:	31 ef       	ldi	r19, 0xF1	; 241
+ 1d6:	3f bd       	out	0x2f, r19	; 47
+	TCCR2A = _BV(COM2A0) | _BV(COM2A1) | _BV(COM2B0) | _BV(COM2B1) | _BV(WGM20);
+ 1d8:	30 93 ca 00 	sts	0x00CA, r19
+	TCCR1B = _BV(WGM12)	| _BV(CS10);
+ 1dc:	39 e0       	ldi	r19, 0x09	; 9
+ 1de:	3e bd       	out	0x2e, r19	; 46
+	TCCR2B = _BV(WGM22) | _BV(CS20);
+ 1e0:	30 93 c9 00 	sts	0x00C9, r19
+	TOCPMSA0 = _BV(TOCC1S0);	
+ 1e4:	34 e0       	ldi	r19, 0x04	; 4
+ 1e6:	30 93 67 00 	sts	0x0067, r19
+	TOCPMSA1 = _BV(TOCC4S0) | _BV(TOCC6S1) | _BV(TOCC7S1);
+ 1ea:	31 ea       	ldi	r19, 0xA1	; 161
+ 1ec:	30 93 68 00 	sts	0x0068, r19
+	TOCPMCOE = _BV(TOCC1OE) | _BV(TOCC4OE) | _BV(TOCC6OE) | _BV(TOCC7OE);
+ 1f0:	32 ed       	ldi	r19, 0xD2	; 210
+ 1f2:	30 93 66 00 	sts	0x0066, r19
+	PWM_ALL = 0xff;
+ 1f6:	ef ef       	ldi	r30, 0xFF	; 255
+ 1f8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1fa:	fb bd       	out	0x2b, r31	; 43
+ 1fc:	ea bd       	out	0x2a, r30	; 42
+	PWM_BLU = 0xff;
+ 1fe:	f0 93 c5 00 	sts	0x00C5, r31
+ 202:	e0 93 c4 00 	sts	0x00C4, r30
+	PWM_GRN = 0xff;
+ 206:	f0 93 c3 00 	sts	0x00C3, r31
+ 20a:	e0 93 c2 00 	sts	0x00C2, r30
+	PWM_RED = 0xff;
+ 20e:	f9 bd       	out	0x29, r31	; 41
+ 210:	e8 bd       	out	0x28, r30	; 40
+	
+	// set up the TWI interface and clear the buffers
+	TWSA = address;
+ 212:	00 93 a2 00 	sts	0x00A2, r16
+	TWSCRA = _BV(TWDIE) | _BV(TWASIE) | _BV(TWEN) | _BV(TWSIE); // | _BV(TWSME);
+ 216:	3c e3       	ldi	r19, 0x3C	; 60
+ 218:	30 93 a5 00 	sts	0x00A5, r19
+	sei();
+}
+
+void clearBuf (uint8_t * buf, uint8_t len) {
+	int i;
+	for (i = 0; i < len; i++) buf[i] = 0;
+ 21c:	66 23       	and	r22, r22
+ 21e:	39 f0       	breq	.+14     	; 0x22e <init+0x74>
+ 220:	46 2f       	mov	r20, r22
+ 222:	50 e0       	ldi	r21, 0x00	; 0
+ 224:	60 e0       	ldi	r22, 0x00	; 0
+ 226:	70 e0       	ldi	r23, 0x00	; 0
+ 228:	29 83       	std	Y+1, r18	; 0x01
+ 22a:	d7 d2       	rcall	.+1454   	; 0x7da <memset>
+ 22c:	29 81       	ldd	r18, Y+1	; 0x01
+ 22e:	22 23       	and	r18, r18
+ 230:	31 f0       	breq	.+12     	; 0x23e <init+0x84>
+ 232:	42 2f       	mov	r20, r18
+ 234:	50 e0       	ldi	r21, 0x00	; 0
+ 236:	60 e0       	ldi	r22, 0x00	; 0
+ 238:	70 e0       	ldi	r23, 0x00	; 0
+ 23a:	c7 01       	movw	r24, r14
+ 23c:	ce d2       	rcall	.+1436   	; 0x7da <memset>
+	//TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);
+	clearBuf(in, inlen);
+	clearBuf(out, outlen);
+	
+	// set up SPI output
+	SPCR = _BV(SPE) | _BV(MSTR);	// turn on the SPI bus in master mode
+ 23e:	80 e5       	ldi	r24, 0x50	; 80
+ 240:	80 93 b2 00 	sts	0x00B2, r24
+	SPSR = _BV(SPI2X);				// turn it up to max speed (clk/2)
+ 244:	81 e0       	ldi	r24, 0x01	; 1
+ 246:	80 93 b1 00 	sts	0x00B1, r24
+	REMAP = _BV(SPIMAP);			// remap the SPI pins to alternates
+ 24a:	82 e0       	ldi	r24, 0x02	; 2
+ 24c:	80 93 65 00 	sts	0x0065, r24
+	
+	// turn on interrupts and away we go
+	sei();
+ 250:	78 94       	sei
+}
+ 252:	0f 90       	pop	r0
+ 254:	df 91       	pop	r29
+ 256:	cf 91       	pop	r28
+ 258:	0f 91       	pop	r16
+ 25a:	ff 90       	pop	r15
+ 25c:	ef 90       	pop	r14
+ 25e:	08 95       	ret
+
+00000260 <clearBuf>:
+
+void clearBuf (uint8_t * buf, uint8_t len) {
+	int i;
+	for (i = 0; i < len; i++) buf[i] = 0;
+ 260:	66 23       	and	r22, r22
+ 262:	29 f0       	breq	.+10     	; 0x26e <clearBuf+0xe>
+ 264:	46 2f       	mov	r20, r22
+ 266:	50 e0       	ldi	r21, 0x00	; 0
+ 268:	60 e0       	ldi	r22, 0x00	; 0
+ 26a:	70 e0       	ldi	r23, 0x00	; 0
+ 26c:	b6 c2       	rjmp	.+1388   	; 0x7da <memset>
+ 26e:	08 95       	ret
+
+00000270 <copyGRBBuf>:
+}
+
+void copyGRBBuf(uint8_t * in, uint8_t * out)
+{
+ 270:	cf 92       	push	r12
+ 272:	df 92       	push	r13
+ 274:	ef 92       	push	r14
+ 276:	ff 92       	push	r15
+ 278:	0f 93       	push	r16
+ 27a:	1f 93       	push	r17
+ 27c:	cf 93       	push	r28
+ 27e:	df 93       	push	r29
+ 280:	8b 01       	movw	r16, r22
+ 282:	00 5f       	subi	r16, 0xF0	; 240
+ 284:	1f 4f       	sbci	r17, 0xFF	; 255
+ 286:	03 96       	adiw	r24, 0x03	; 3
+ 288:	7b 01       	movw	r14, r22
+ 28a:	20 ed       	ldi	r18, 0xD0	; 208
+ 28c:	e2 0e       	add	r14, r18
+ 28e:	f1 1c       	adc	r15, r1
+ 290:	b8 01       	movw	r22, r16
+ 292:	68 50       	subi	r22, 0x08	; 8
+ 294:	71 09       	sbc	r23, r1
+ 296:	98 01       	movw	r18, r16
+ 298:	d8 01       	movw	r26, r16
+ 29a:	50 97       	sbiw	r26, 0x10	; 16
+ 29c:	fc 01       	movw	r30, r24
+ 29e:	68 01       	movw	r12, r16
+ 2a0:	af 01       	movw	r20, r30
+ 2a2:	42 50       	subi	r20, 0x02	; 2
+ 2a4:	51 09       	sbc	r21, r1
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+			out[(15-col) + (row * 24)]		= in[((col*3) + 1) + (row * 24)] >> 2;	// copy the green (order is flipped)
+ 2a6:	ea 01       	movw	r28, r20
+ 2a8:	48 81       	ld	r20, Y
+ 2aa:	46 95       	lsr	r20
+ 2ac:	46 95       	lsr	r20
+ 2ae:	e6 01       	movw	r28, r12
+ 2b0:	4a 93       	st	-Y, r20
+ 2b2:	6e 01       	movw	r12, r28
+			out[col + (row * 24)]			= in[((col*3) + 3) + (row * 24)] >> 2;	// copy the blue
+ 2b4:	40 81       	ld	r20, Z
+ 2b6:	46 95       	lsr	r20
+ 2b8:	46 95       	lsr	r20
+ 2ba:	4d 93       	st	X+, r20
+ 2bc:	af 01       	movw	r20, r30
+ 2be:	41 50       	subi	r20, 0x01	; 1
+ 2c0:	51 09       	sbc	r21, r1
+			out[(col + 16) + (row * 24)]	= in[((col*3) + 2) + (row * 24)] >> 2;	// copy the red
+ 2c2:	ea 01       	movw	r28, r20
+ 2c4:	48 81       	ld	r20, Y
+ 2c6:	46 95       	lsr	r20
+ 2c8:	46 95       	lsr	r20
+ 2ca:	e9 01       	movw	r28, r18
+ 2cc:	49 93       	st	Y+, r20
+ 2ce:	9e 01       	movw	r18, r28
+ 2d0:	33 96       	adiw	r30, 0x03	; 3
+void copyGRBBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+ 2d2:	a6 17       	cp	r26, r22
+ 2d4:	b7 07       	cpc	r27, r23
+ 2d6:	21 f7       	brne	.-56     	; 0x2a0 <copyGRBBuf+0x30>
+ 2d8:	08 5e       	subi	r16, 0xE8	; 232
+ 2da:	1f 4f       	sbci	r17, 0xFF	; 255
+ 2dc:	48 96       	adiw	r24, 0x18	; 24
+
+void copyGRBBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+ 2de:	0e 15       	cp	r16, r14
+ 2e0:	1f 05       	cpc	r17, r15
+ 2e2:	b1 f6       	brne	.-84     	; 0x290 <copyGRBBuf+0x20>
+			out[(15-col) + (row * 24)]		= in[((col*3) + 1) + (row * 24)] >> 2;	// copy the green (order is flipped)
+			out[col + (row * 24)]			= in[((col*3) + 3) + (row * 24)] >> 2;	// copy the blue
+			out[(col + 16) + (row * 24)]	= in[((col*3) + 2) + (row * 24)] >> 2;	// copy the red
+		}
+	}
+}
+ 2e4:	df 91       	pop	r29
+ 2e6:	cf 91       	pop	r28
+ 2e8:	1f 91       	pop	r17
+ 2ea:	0f 91       	pop	r16
+ 2ec:	ff 90       	pop	r15
+ 2ee:	ef 90       	pop	r14
+ 2f0:	df 90       	pop	r13
+ 2f2:	cf 90       	pop	r12
+ 2f4:	08 95       	ret
+
+000002f6 <copy3BitBuf>:
+
+// Copy the R...G...B... bit string from a buffer encoded for the original buffer
+// to the GRBGRBGRB... byte string required for PWM generation in this code
+void copy3BitBuf(uint8_t * in, uint8_t * out)
+{
+ 2f6:	8f 92       	push	r8
+ 2f8:	9f 92       	push	r9
+ 2fa:	af 92       	push	r10
+ 2fc:	bf 92       	push	r11
+ 2fe:	cf 92       	push	r12
+ 300:	df 92       	push	r13
+ 302:	ef 92       	push	r14
+ 304:	ff 92       	push	r15
+ 306:	0f 93       	push	r16
+ 308:	1f 93       	push	r17
+ 30a:	cf 93       	push	r28
+ 30c:	df 93       	push	r29
+ 30e:	8c 01       	movw	r16, r24
+ 310:	0f 5e       	subi	r16, 0xEF	; 239
+ 312:	1f 4f       	sbci	r17, 0xFF	; 255
+ 314:	7b 01       	movw	r14, r22
+ 316:	6c 01       	movw	r12, r24
+ 318:	29 e1       	ldi	r18, 0x19	; 25
+ 31a:	c2 0e       	add	r12, r18
+ 31c:	d1 1c       	adc	r13, r1
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+			(in[row + 1] & _BV(col))	? out[((col + 16) + (row * 24))] = 0x3f	: (out[((col + 16) + (row * 24))] = 0);		// grab the red (first eight bytes of input)
+ 31e:	8f e3       	ldi	r24, 0x3F	; 63
+ 320:	a8 2e       	mov	r10, r24
+}
+
+// Copy the R...G...B... bit string from a buffer encoded for the original buffer
+// to the GRBGRBGRB... byte string required for PWM generation in this code
+void copy3BitBuf(uint8_t * in, uint8_t * out)
+{
+ 322:	e7 01       	movw	r28, r14
+ 324:	60 96       	adiw	r28, 0x10	; 16
+ 326:	d7 01       	movw	r26, r14
+ 328:	18 96       	adiw	r26, 0x08	; 8
+ 32a:	47 01       	movw	r8, r14
+ 32c:	20 e0       	ldi	r18, 0x00	; 0
+ 32e:	30 e0       	ldi	r19, 0x00	; 0
+ 330:	c8 01       	movw	r24, r16
+ 332:	40 97       	sbiw	r24, 0x10	; 16
+ 334:	b8 01       	movw	r22, r16
+ 336:	68 50       	subi	r22, 0x08	; 8
+ 338:	71 09       	sbc	r23, r1
+ 33a:	23 c0       	rjmp	.+70     	; 0x382 <__stack+0x83>
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+			(in[row + 1] & _BV(col))	? out[((col + 16) + (row * 24))] = 0x3f	: (out[((col + 16) + (row * 24))] = 0);		// grab the red (first eight bytes of input)
+ 33c:	a8 82       	st	Y, r10
+			(in[row + 9] & _BV(col))	? out[(col + 8) + (row * 24)] = 0x3f	: (out[(col + 8) + (row * 24)] = 0);		// grab the green (next eight bytes of input)
+ 33e:	fb 01       	movw	r30, r22
+ 340:	40 81       	ld	r20, Z
+ 342:	50 e0       	ldi	r21, 0x00	; 0
+ 344:	0b 2c       	mov	r0, r11
+ 346:	02 c0       	rjmp	.+4      	; 0x34c <__stack+0x4d>
+ 348:	55 95       	asr	r21
+ 34a:	47 95       	ror	r20
+ 34c:	0a 94       	dec	r0
+ 34e:	e2 f7       	brpl	.-8      	; 0x348 <__stack+0x49>
+ 350:	40 ff       	sbrs	r20, 0
+ 352:	27 c0       	rjmp	.+78     	; 0x3a2 <__stack+0xa3>
+ 354:	ac 92       	st	X, r10
+			(in[row + 17] & _BV(col))	? out[(col) + (row * 24)] = 0x3f		: (out[(col) + (row * 24)] = 0);			// grab the green (next eight bytes of input)
+ 356:	f8 01       	movw	r30, r16
+ 358:	40 81       	ld	r20, Z
+ 35a:	50 e0       	ldi	r21, 0x00	; 0
+ 35c:	02 c0       	rjmp	.+4      	; 0x362 <__stack+0x63>
+ 35e:	55 95       	asr	r21
+ 360:	47 95       	ror	r20
+ 362:	ba 94       	dec	r11
+ 364:	e2 f7       	brpl	.-8      	; 0x35e <__stack+0x5f>
+ 366:	f4 01       	movw	r30, r8
+ 368:	40 ff       	sbrs	r20, 0
+ 36a:	19 c0       	rjmp	.+50     	; 0x39e <__stack+0x9f>
+ 36c:	a0 82       	st	Z, r10
+ 36e:	2f 5f       	subi	r18, 0xFF	; 255
+ 370:	3f 4f       	sbci	r19, 0xFF	; 255
+ 372:	ff ef       	ldi	r31, 0xFF	; 255
+ 374:	8f 1a       	sub	r8, r31
+ 376:	9f 0a       	sbc	r9, r31
+ 378:	11 96       	adiw	r26, 0x01	; 1
+ 37a:	21 96       	adiw	r28, 0x01	; 1
+void copy3BitBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+ 37c:	28 30       	cpi	r18, 0x08	; 8
+ 37e:	31 05       	cpc	r19, r1
+ 380:	91 f0       	breq	.+36     	; 0x3a6 <__stack+0xa7>
+			(in[row + 1] & _BV(col))	? out[((col + 16) + (row * 24))] = 0x3f	: (out[((col + 16) + (row * 24))] = 0);		// grab the red (first eight bytes of input)
+ 382:	b2 2e       	mov	r11, r18
+ 384:	fc 01       	movw	r30, r24
+ 386:	40 81       	ld	r20, Z
+ 388:	50 e0       	ldi	r21, 0x00	; 0
+ 38a:	02 2e       	mov	r0, r18
+ 38c:	02 c0       	rjmp	.+4      	; 0x392 <__stack+0x93>
+ 38e:	55 95       	asr	r21
+ 390:	47 95       	ror	r20
+ 392:	0a 94       	dec	r0
+ 394:	e2 f7       	brpl	.-8      	; 0x38e <__stack+0x8f>
+ 396:	40 fd       	sbrc	r20, 0
+ 398:	d1 cf       	rjmp	.-94     	; 0x33c <__stack+0x3d>
+ 39a:	18 82       	st	Y, r1
+ 39c:	d0 cf       	rjmp	.-96     	; 0x33e <__stack+0x3f>
+			(in[row + 9] & _BV(col))	? out[(col + 8) + (row * 24)] = 0x3f	: (out[(col + 8) + (row * 24)] = 0);		// grab the green (next eight bytes of input)
+			(in[row + 17] & _BV(col))	? out[(col) + (row * 24)] = 0x3f		: (out[(col) + (row * 24)] = 0);			// grab the green (next eight bytes of input)
+ 39e:	10 82       	st	Z, r1
+ 3a0:	e6 cf       	rjmp	.-52     	; 0x36e <__stack+0x6f>
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+			(in[row + 1] & _BV(col))	? out[((col + 16) + (row * 24))] = 0x3f	: (out[((col + 16) + (row * 24))] = 0);		// grab the red (first eight bytes of input)
+			(in[row + 9] & _BV(col))	? out[(col + 8) + (row * 24)] = 0x3f	: (out[(col + 8) + (row * 24)] = 0);		// grab the green (next eight bytes of input)
+ 3a2:	1c 92       	st	X, r1
+ 3a4:	d8 cf       	rjmp	.-80     	; 0x356 <__stack+0x57>
+ 3a6:	0f 5f       	subi	r16, 0xFF	; 255
+ 3a8:	1f 4f       	sbci	r17, 0xFF	; 255
+ 3aa:	28 e1       	ldi	r18, 0x18	; 24
+ 3ac:	e2 0e       	add	r14, r18
+ 3ae:	f1 1c       	adc	r15, r1
+// to the GRBGRBGRB... byte string required for PWM generation in this code
+void copy3BitBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+ 3b0:	0c 15       	cp	r16, r12
+ 3b2:	1d 05       	cpc	r17, r13
+ 3b4:	09 f0       	breq	.+2      	; 0x3b8 <__stack+0xb9>
+ 3b6:	b5 cf       	rjmp	.-150    	; 0x322 <__stack+0x23>
+			(in[row + 1] & _BV(col))	? out[((col + 16) + (row * 24))] = 0x3f	: (out[((col + 16) + (row * 24))] = 0);		// grab the red (first eight bytes of input)
+			(in[row + 9] & _BV(col))	? out[(col + 8) + (row * 24)] = 0x3f	: (out[(col + 8) + (row * 24)] = 0);		// grab the green (next eight bytes of input)
+			(in[row + 17] & _BV(col))	? out[(col) + (row * 24)] = 0x3f		: (out[(col) + (row * 24)] = 0);			// grab the green (next eight bytes of input)
+		}
+	}
+}
+ 3b8:	df 91       	pop	r29
+ 3ba:	cf 91       	pop	r28
+ 3bc:	1f 91       	pop	r17
+ 3be:	0f 91       	pop	r16
+ 3c0:	ff 90       	pop	r15
+ 3c2:	ef 90       	pop	r14
+ 3c4:	df 90       	pop	r13
+ 3c6:	cf 90       	pop	r12
+ 3c8:	bf 90       	pop	r11
+ 3ca:	af 90       	pop	r10
+ 3cc:	9f 90       	pop	r9
+ 3ce:	8f 90       	pop	r8
+ 3d0:	08 95       	ret
+
+000003d2 <main>:
+		TWSCRB = _BV(TWCMD0) | _BV(TWCMD1);			// ACK the byte
+	}
+}
+
+
+int main(void) {
+ 3d2:	cf 93       	push	r28
+ 3d4:	df 93       	push	r29
+ 3d6:	cd b7       	in	r28, 0x3d	; 61
+ 3d8:	de b7       	in	r29, 0x3e	; 62
+ 3da:	6e 97       	sbiw	r28, 0x1e	; 30
+ 3dc:	0f b6       	in	r0, 0x3f	; 63
+ 3de:	f8 94       	cli
+ 3e0:	de bf       	out	0x3e, r29	; 62
+ 3e2:	0f be       	out	0x3f, r0	; 63
+ 3e4:	cd bf       	out	0x3d, r28	; 61
+		
+	init(inbuf, (uint8_t)BUFLEN, output, (uint8_t)OUTLEN, getAddress());
+ 3e6:	c8 de       	rcall	.-624    	; 0x178 <getAddress>
+ 3e8:	08 2f       	mov	r16, r24
+ 3ea:	20 ec       	ldi	r18, 0xC0	; 192
+ 3ec:	4e ec       	ldi	r20, 0xCE	; 206
+ 3ee:	51 e0       	ldi	r21, 0x01	; 1
+ 3f0:	68 ec       	ldi	r22, 0xC8	; 200
+ 3f2:	83 e0       	ldi	r24, 0x03	; 3
+ 3f4:	91 e0       	ldi	r25, 0x01	; 1
+ 3f6:	e1 de       	rcall	.-574    	; 0x1ba <init>
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 3f8:	1a 8e       	std	Y+26, r1	; 0x1a
+ 3fa:	2a 8d       	ldd	r18, Y+26	; 0x1a
+ 3fc:	28 30       	cpi	r18, 0x08	; 8
+ 3fe:	88 f0       	brcs	.+34     	; 0x422 <main+0x50>
+		
+	init(inbuf, (uint8_t)BUFLEN, output, (uint8_t)OUTLEN, getAddress());
+	
+    while(1) {
+		doTick();
+        switch (cmd) {
+ 400:	80 91 02 01 	lds	r24, 0x0102
+ 404:	84 30       	cpi	r24, 0x04	; 4
+ 406:	09 f4       	brne	.+2      	; 0x40a <main+0x38>
+ 408:	e1 c1       	rjmp	.+962    	; 0x7cc <main+0x3fa>
+ 40a:	08 f4       	brcc	.+2      	; 0x40e <main+0x3c>
+ 40c:	8e c1       	rjmp	.+796    	; 0x72a <main+0x358>
+ 40e:	80 31       	cpi	r24, 0x10	; 16
+ 410:	09 f4       	brne	.+2      	; 0x414 <main+0x42>
+ 412:	98 c1       	rjmp	.+816    	; 0x744 <main+0x372>
+ 414:	80 32       	cpi	r24, 0x20	; 32
+ 416:	09 f4       	brne	.+2      	; 0x41a <main+0x48>
+ 418:	d0 c1       	rjmp	.+928    	; 0x7ba <main+0x3e8>
+ 41a:	88 30       	cpi	r24, 0x08	; 8
+ 41c:	09 f4       	brne	.+2      	; 0x420 <main+0x4e>
+ 41e:	75 c1       	rjmp	.+746    	; 0x70a <main+0x338>
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 420:	1a 8e       	std	Y+26, r1	; 0x1a
+		select = rowSelect * 24;
+		for (pwmCtr = 0; pwmCtr < 64; pwmCtr++) {
+ 422:	10 92 cc 01 	sts	0x01CC, r1
+ 426:	10 92 cb 01 	sts	0x01CB, r1
+ 42a:	81 e0       	ldi	r24, 0x01	; 1
+ 42c:	90 e0       	ldi	r25, 0x00	; 0
+ 42e:	0a 8c       	ldd	r0, Y+26	; 0x1a
+ 430:	02 c0       	rjmp	.+4      	; 0x436 <main+0x64>
+ 432:	88 0f       	add	r24, r24
+ 434:	99 1f       	adc	r25, r25
+ 436:	0a 94       	dec	r0
+ 438:	e2 f7       	brpl	.-8      	; 0x432 <main+0x60>
+ 43a:	28 2f       	mov	r18, r24
+ 43c:	20 95       	com	r18
+ 43e:	29 83       	std	Y+1, r18	; 0x01
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+		select = rowSelect * 24;
+ 440:	8a 8d       	ldd	r24, Y+26	; 0x1a
+ 442:	88 0f       	add	r24, r24
+ 444:	3a 8d       	ldd	r19, Y+26	; 0x1a
+ 446:	83 0f       	add	r24, r19
+ 448:	88 0f       	add	r24, r24
+ 44a:	88 0f       	add	r24, r24
+ 44c:	88 0f       	add	r24, r24
+ 44e:	90 e0       	ldi	r25, 0x00	; 0
+ 450:	8c 01       	movw	r16, r24
+ 452:	02 53       	subi	r16, 0x32	; 50
+ 454:	1e 4f       	sbci	r17, 0xFE	; 254
+ 456:	bc 01       	movw	r22, r24
+ 458:	61 53       	subi	r22, 0x31	; 49
+ 45a:	7e 4f       	sbci	r23, 0xFE	; 254
+ 45c:	ac 01       	movw	r20, r24
+ 45e:	40 53       	subi	r20, 0x30	; 48
+ 460:	5e 4f       	sbci	r21, 0xFE	; 254
+ 462:	dc 01       	movw	r26, r24
+ 464:	af 52       	subi	r26, 0x2F	; 47
+ 466:	be 4f       	sbci	r27, 0xFE	; 254
+ 468:	6d 01       	movw	r12, r26
+ 46a:	fc 01       	movw	r30, r24
+ 46c:	ee 52       	subi	r30, 0x2E	; 46
+ 46e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 470:	fc 8f       	std	Y+28, r31	; 0x1c
+ 472:	eb 8f       	std	Y+27, r30	; 0x1b
+ 474:	dc 01       	movw	r26, r24
+ 476:	ad 52       	subi	r26, 0x2D	; 45
+ 478:	be 4f       	sbci	r27, 0xFE	; 254
+ 47a:	9c 01       	movw	r18, r24
+ 47c:	2c 52       	subi	r18, 0x2C	; 44
+ 47e:	3e 4f       	sbci	r19, 0xFE	; 254
+ 480:	3e 8f       	std	Y+30, r19	; 0x1e
+ 482:	2d 8f       	std	Y+29, r18	; 0x1d
+ 484:	fc 01       	movw	r30, r24
+ 486:	eb 52       	subi	r30, 0x2B	; 43
+ 488:	fe 4f       	sbci	r31, 0xFE	; 254
+ 48a:	5f 01       	movw	r10, r30
+ 48c:	9c 01       	movw	r18, r24
+ 48e:	2a 52       	subi	r18, 0x2A	; 42
+ 490:	3e 4f       	sbci	r19, 0xFE	; 254
+ 492:	49 01       	movw	r8, r18
+ 494:	fc 01       	movw	r30, r24
+ 496:	e9 52       	subi	r30, 0x29	; 41
+ 498:	fe 4f       	sbci	r31, 0xFE	; 254
+ 49a:	3f 01       	movw	r6, r30
+ 49c:	9c 01       	movw	r18, r24
+ 49e:	28 52       	subi	r18, 0x28	; 40
+ 4a0:	3e 4f       	sbci	r19, 0xFE	; 254
+ 4a2:	29 01       	movw	r4, r18
+ 4a4:	fc 01       	movw	r30, r24
+ 4a6:	e7 52       	subi	r30, 0x27	; 39
+ 4a8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4aa:	1f 01       	movw	r2, r30
+ 4ac:	9c 01       	movw	r18, r24
+ 4ae:	26 52       	subi	r18, 0x26	; 38
+ 4b0:	3e 4f       	sbci	r19, 0xFE	; 254
+ 4b2:	3b 83       	std	Y+3, r19	; 0x03
+ 4b4:	2a 83       	std	Y+2, r18	; 0x02
+ 4b6:	fc 01       	movw	r30, r24
+ 4b8:	e5 52       	subi	r30, 0x25	; 37
+ 4ba:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4bc:	fd 83       	std	Y+5, r31	; 0x05
+ 4be:	ec 83       	std	Y+4, r30	; 0x04
+ 4c0:	9c 01       	movw	r18, r24
+ 4c2:	24 52       	subi	r18, 0x24	; 36
+ 4c4:	3e 4f       	sbci	r19, 0xFE	; 254
+ 4c6:	3f 83       	std	Y+7, r19	; 0x07
+ 4c8:	2e 83       	std	Y+6, r18	; 0x06
+ 4ca:	fc 01       	movw	r30, r24
+ 4cc:	e3 52       	subi	r30, 0x23	; 35
+ 4ce:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4d0:	f9 87       	std	Y+9, r31	; 0x09
+ 4d2:	e8 87       	std	Y+8, r30	; 0x08
+ 4d4:	9c 01       	movw	r18, r24
+ 4d6:	22 52       	subi	r18, 0x22	; 34
+ 4d8:	3e 4f       	sbci	r19, 0xFE	; 254
+ 4da:	3b 87       	std	Y+11, r19	; 0x0b
+ 4dc:	2a 87       	std	Y+10, r18	; 0x0a
+ 4de:	fc 01       	movw	r30, r24
+ 4e0:	e1 52       	subi	r30, 0x21	; 33
+ 4e2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4e4:	fd 87       	std	Y+13, r31	; 0x0d
+ 4e6:	ec 87       	std	Y+12, r30	; 0x0c
+ 4e8:	9c 01       	movw	r18, r24
+ 4ea:	20 52       	subi	r18, 0x20	; 32
+ 4ec:	3e 4f       	sbci	r19, 0xFE	; 254
+ 4ee:	3f 87       	std	Y+15, r19	; 0x0f
+ 4f0:	2e 87       	std	Y+14, r18	; 0x0e
+ 4f2:	fc 01       	movw	r30, r24
+ 4f4:	ef 51       	subi	r30, 0x1F	; 31
+ 4f6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4f8:	f9 8b       	std	Y+17, r31	; 0x11
+ 4fa:	e8 8b       	std	Y+16, r30	; 0x10
+ 4fc:	9c 01       	movw	r18, r24
+ 4fe:	2e 51       	subi	r18, 0x1E	; 30
+ 500:	3e 4f       	sbci	r19, 0xFE	; 254
+ 502:	3b 8b       	std	Y+19, r19	; 0x13
+ 504:	2a 8b       	std	Y+18, r18	; 0x12
+ 506:	fc 01       	movw	r30, r24
+ 508:	ed 51       	subi	r30, 0x1D	; 29
+ 50a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 50c:	fd 8b       	std	Y+21, r31	; 0x15
+ 50e:	ec 8b       	std	Y+20, r30	; 0x14
+ 510:	9c 01       	movw	r18, r24
+ 512:	2c 51       	subi	r18, 0x1C	; 28
+ 514:	3e 4f       	sbci	r19, 0xFE	; 254
+ 516:	3f 8b       	std	Y+23, r19	; 0x17
+ 518:	2e 8b       	std	Y+22, r18	; 0x16
+ 51a:	fc 01       	movw	r30, r24
+ 51c:	eb 51       	subi	r30, 0x1B	; 27
+ 51e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 520:	f9 8f       	std	Y+25, r31	; 0x19
+ 522:	e8 8f       	std	Y+24, r30	; 0x18
+ 524:	78 01       	movw	r14, r16
+ 526:	8b 01       	movw	r16, r22
+ 528:	ba 01       	movw	r22, r20
+		for (pwmCtr = 0; pwmCtr < 64; pwmCtr++) {
+			PORTB |= _BV(1);					// drive the latch line high
+ 52a:	c1 9a       	sbi	0x18, 1	; 24
+			SPDR = ~_BV(rowSelect);
+ 52c:	f9 81       	ldd	r31, Y+1	; 0x01
+ 52e:	f0 93 b0 00 	sts	0x00B0, r31
+			PORTB &= ~_BV(1);					// clear the latch line
+ 532:	c1 98       	cbi	0x18, 1	; 24
+			// write out the blue LEDs
+			out = 0xff;
+			(output[select + 0] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 534:	80 91 cb 01 	lds	r24, 0x01CB
+ 538:	90 91 cc 01 	lds	r25, 0x01CC
+ 53c:	f7 01       	movw	r30, r14
+ 53e:	20 81       	ld	r18, Z
+ 540:	30 e0       	ldi	r19, 0x00	; 0
+ 542:	82 17       	cp	r24, r18
+ 544:	93 07       	cpc	r25, r19
+ 546:	08 f4       	brcc	.+2      	; 0x54a <main+0x178>
+ 548:	ed c0       	rjmp	.+474    	; 0x724 <main+0x352>
+ 54a:	4d ef       	ldi	r20, 0xFD	; 253
+ 54c:	5f ef       	ldi	r21, 0xFF	; 255
+			(output[select + 1] <= pwmCtr)	? (out |= _BV(1)) : (out &= ~_BV(1));
+ 54e:	f8 01       	movw	r30, r16
+ 550:	20 81       	ld	r18, Z
+ 552:	30 e0       	ldi	r19, 0x00	; 0
+ 554:	82 17       	cp	r24, r18
+ 556:	93 07       	cpc	r25, r19
+ 558:	08 f0       	brcs	.+2      	; 0x55c <main+0x18a>
+ 55a:	45 2f       	mov	r20, r21
+			(output[select + 2] <= pwmCtr)	? (out |= _BV(2)) : (out &= ~_BV(2));
+ 55c:	fb 01       	movw	r30, r22
+ 55e:	20 81       	ld	r18, Z
+ 560:	30 e0       	ldi	r19, 0x00	; 0
+ 562:	82 17       	cp	r24, r18
+ 564:	93 07       	cpc	r25, r19
+ 566:	08 f4       	brcc	.+2      	; 0x56a <main+0x198>
+ 568:	4b 7f       	andi	r20, 0xFB	; 251
+			(output[select + 3] <= pwmCtr)	? (out |= _BV(3)) : (out &= ~_BV(3));
+ 56a:	f6 01       	movw	r30, r12
+ 56c:	20 81       	ld	r18, Z
+ 56e:	30 e0       	ldi	r19, 0x00	; 0
+ 570:	82 17       	cp	r24, r18
+ 572:	93 07       	cpc	r25, r19
+ 574:	08 f4       	brcc	.+2      	; 0x578 <main+0x1a6>
+ 576:	47 7f       	andi	r20, 0xF7	; 247
+			(output[select + 4] <= pwmCtr)	? (out |= _BV(4)) : (out &= ~_BV(4));
+ 578:	eb 8d       	ldd	r30, Y+27	; 0x1b
+ 57a:	fc 8d       	ldd	r31, Y+28	; 0x1c
+ 57c:	20 81       	ld	r18, Z
+ 57e:	30 e0       	ldi	r19, 0x00	; 0
+ 580:	82 17       	cp	r24, r18
+ 582:	93 07       	cpc	r25, r19
+ 584:	08 f4       	brcc	.+2      	; 0x588 <main+0x1b6>
+ 586:	4f 7e       	andi	r20, 0xEF	; 239
+			(output[select + 5] <= pwmCtr)	? (out |= _BV(5)) : (out &= ~_BV(5));
+ 588:	2c 91       	ld	r18, X
+ 58a:	30 e0       	ldi	r19, 0x00	; 0
+ 58c:	82 17       	cp	r24, r18
+ 58e:	93 07       	cpc	r25, r19
+ 590:	08 f4       	brcc	.+2      	; 0x594 <main+0x1c2>
+ 592:	4f 7d       	andi	r20, 0xDF	; 223
+			(output[select + 6] <= pwmCtr)	? (out |= _BV(6)) : (out &= ~_BV(6));
+ 594:	ed 8d       	ldd	r30, Y+29	; 0x1d
+ 596:	fe 8d       	ldd	r31, Y+30	; 0x1e
+ 598:	20 81       	ld	r18, Z
+ 59a:	30 e0       	ldi	r19, 0x00	; 0
+ 59c:	82 17       	cp	r24, r18
+ 59e:	93 07       	cpc	r25, r19
+ 5a0:	08 f4       	brcc	.+2      	; 0x5a4 <main+0x1d2>
+ 5a2:	4f 7b       	andi	r20, 0xBF	; 191
+			(output[select + 7] <= pwmCtr)	? (out |= _BV(7)) : (out &= ~_BV(7));
+ 5a4:	f5 01       	movw	r30, r10
+ 5a6:	20 81       	ld	r18, Z
+ 5a8:	30 e0       	ldi	r19, 0x00	; 0
+ 5aa:	82 17       	cp	r24, r18
+ 5ac:	93 07       	cpc	r25, r19
+ 5ae:	08 f4       	brcc	.+2      	; 0x5b2 <main+0x1e0>
+ 5b0:	4f 77       	andi	r20, 0x7F	; 127
+			
+			SPDR = out;
+ 5b2:	40 93 b0 00 	sts	0x00B0, r20
+			// write out the green LEDs
+			out = 0xff;
+			(output[select + 8] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 5b6:	80 91 cb 01 	lds	r24, 0x01CB
+ 5ba:	90 91 cc 01 	lds	r25, 0x01CC
+ 5be:	f4 01       	movw	r30, r8
+ 5c0:	20 81       	ld	r18, Z
+ 5c2:	30 e0       	ldi	r19, 0x00	; 0
+ 5c4:	82 17       	cp	r24, r18
+ 5c6:	93 07       	cpc	r25, r19
+ 5c8:	08 f4       	brcc	.+2      	; 0x5cc <main+0x1fa>
+ 5ca:	a9 c0       	rjmp	.+338    	; 0x71e <main+0x34c>
+ 5cc:	4d ef       	ldi	r20, 0xFD	; 253
+ 5ce:	5f ef       	ldi	r21, 0xFF	; 255
+			(output[select + 9] <= pwmCtr)	? (out |= _BV(1)) : (out &= ~_BV(1));
+ 5d0:	f3 01       	movw	r30, r6
+ 5d2:	20 81       	ld	r18, Z
+ 5d4:	30 e0       	ldi	r19, 0x00	; 0
+ 5d6:	82 17       	cp	r24, r18
+ 5d8:	93 07       	cpc	r25, r19
+ 5da:	08 f0       	brcs	.+2      	; 0x5de <main+0x20c>
+ 5dc:	45 2f       	mov	r20, r21
+			(output[select + 10] <= pwmCtr)	? (out |= _BV(2)) : (out &= ~_BV(2));
+ 5de:	f2 01       	movw	r30, r4
+ 5e0:	20 81       	ld	r18, Z
+ 5e2:	30 e0       	ldi	r19, 0x00	; 0
+ 5e4:	82 17       	cp	r24, r18
+ 5e6:	93 07       	cpc	r25, r19
+ 5e8:	08 f4       	brcc	.+2      	; 0x5ec <main+0x21a>
+ 5ea:	4b 7f       	andi	r20, 0xFB	; 251
+			(output[select + 11] <= pwmCtr)	? (out |= _BV(3)) : (out &= ~_BV(3));
+ 5ec:	f1 01       	movw	r30, r2
+ 5ee:	20 81       	ld	r18, Z
+ 5f0:	30 e0       	ldi	r19, 0x00	; 0
+ 5f2:	82 17       	cp	r24, r18
+ 5f4:	93 07       	cpc	r25, r19
+ 5f6:	08 f4       	brcc	.+2      	; 0x5fa <main+0x228>
+ 5f8:	47 7f       	andi	r20, 0xF7	; 247
+			(output[select + 12] <= pwmCtr)	? (out |= _BV(4)) : (out &= ~_BV(4));
+ 5fa:	ea 81       	ldd	r30, Y+2	; 0x02
+ 5fc:	fb 81       	ldd	r31, Y+3	; 0x03
+ 5fe:	20 81       	ld	r18, Z
+ 600:	30 e0       	ldi	r19, 0x00	; 0
+ 602:	82 17       	cp	r24, r18
+ 604:	93 07       	cpc	r25, r19
+ 606:	08 f4       	brcc	.+2      	; 0x60a <main+0x238>
+ 608:	4f 7e       	andi	r20, 0xEF	; 239
+			(output[select + 13] <= pwmCtr)	? (out |= _BV(5)) : (out &= ~_BV(5));
+ 60a:	ec 81       	ldd	r30, Y+4	; 0x04
+ 60c:	fd 81       	ldd	r31, Y+5	; 0x05
+ 60e:	20 81       	ld	r18, Z
+ 610:	30 e0       	ldi	r19, 0x00	; 0
+ 612:	82 17       	cp	r24, r18
+ 614:	93 07       	cpc	r25, r19
+ 616:	08 f4       	brcc	.+2      	; 0x61a <main+0x248>
+ 618:	4f 7d       	andi	r20, 0xDF	; 223
+			(output[select + 14] <= pwmCtr)	? (out |= _BV(6)) : (out &= ~_BV(6));
+ 61a:	ee 81       	ldd	r30, Y+6	; 0x06
+ 61c:	ff 81       	ldd	r31, Y+7	; 0x07
+ 61e:	20 81       	ld	r18, Z
+ 620:	30 e0       	ldi	r19, 0x00	; 0
+ 622:	82 17       	cp	r24, r18
+ 624:	93 07       	cpc	r25, r19
+ 626:	08 f4       	brcc	.+2      	; 0x62a <main+0x258>
+ 628:	4f 7b       	andi	r20, 0xBF	; 191
+			(output[select + 15] <= pwmCtr)	? (out |= _BV(7)) : (out &= ~_BV(7));
+ 62a:	e8 85       	ldd	r30, Y+8	; 0x08
+ 62c:	f9 85       	ldd	r31, Y+9	; 0x09
+ 62e:	20 81       	ld	r18, Z
+ 630:	30 e0       	ldi	r19, 0x00	; 0
+ 632:	82 17       	cp	r24, r18
+ 634:	93 07       	cpc	r25, r19
+ 636:	08 f4       	brcc	.+2      	; 0x63a <main+0x268>
+ 638:	4f 77       	andi	r20, 0x7F	; 127
+			SPDR = out;
+ 63a:	40 93 b0 00 	sts	0x00B0, r20
+			// write out the red LEDs
+			out = 0xff;
+			(output[select + 16] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 63e:	80 91 cb 01 	lds	r24, 0x01CB
+ 642:	90 91 cc 01 	lds	r25, 0x01CC
+ 646:	ea 85       	ldd	r30, Y+10	; 0x0a
+ 648:	fb 85       	ldd	r31, Y+11	; 0x0b
+ 64a:	20 81       	ld	r18, Z
+ 64c:	30 e0       	ldi	r19, 0x00	; 0
+ 64e:	82 17       	cp	r24, r18
+ 650:	93 07       	cpc	r25, r19
+ 652:	08 f4       	brcc	.+2      	; 0x656 <main+0x284>
+ 654:	61 c0       	rjmp	.+194    	; 0x718 <main+0x346>
+ 656:	4d ef       	ldi	r20, 0xFD	; 253
+ 658:	5f ef       	ldi	r21, 0xFF	; 255
+			(output[select + 17] <= pwmCtr)	? (out |= _BV(1)) : (out &= ~_BV(1));
+ 65a:	ec 85       	ldd	r30, Y+12	; 0x0c
+ 65c:	fd 85       	ldd	r31, Y+13	; 0x0d
+ 65e:	20 81       	ld	r18, Z
+ 660:	30 e0       	ldi	r19, 0x00	; 0
+ 662:	82 17       	cp	r24, r18
+ 664:	93 07       	cpc	r25, r19
+ 666:	08 f0       	brcs	.+2      	; 0x66a <main+0x298>
+ 668:	45 2f       	mov	r20, r21
+			(output[select + 18] <= pwmCtr)	? (out |= _BV(2)) : (out &= ~_BV(2));
+ 66a:	ee 85       	ldd	r30, Y+14	; 0x0e
+ 66c:	ff 85       	ldd	r31, Y+15	; 0x0f
+ 66e:	20 81       	ld	r18, Z
+ 670:	30 e0       	ldi	r19, 0x00	; 0
+ 672:	82 17       	cp	r24, r18
+ 674:	93 07       	cpc	r25, r19
+ 676:	08 f4       	brcc	.+2      	; 0x67a <main+0x2a8>
+ 678:	4b 7f       	andi	r20, 0xFB	; 251
+			(output[select + 19] <= pwmCtr)	? (out |= _BV(3)) : (out &= ~_BV(3));
+ 67a:	e8 89       	ldd	r30, Y+16	; 0x10
+ 67c:	f9 89       	ldd	r31, Y+17	; 0x11
+ 67e:	20 81       	ld	r18, Z
+ 680:	30 e0       	ldi	r19, 0x00	; 0
+ 682:	82 17       	cp	r24, r18
+ 684:	93 07       	cpc	r25, r19
+ 686:	08 f4       	brcc	.+2      	; 0x68a <main+0x2b8>
+ 688:	47 7f       	andi	r20, 0xF7	; 247
+			(output[select + 20] <= pwmCtr)	? (out |= _BV(4)) : (out &= ~_BV(4));
+ 68a:	ea 89       	ldd	r30, Y+18	; 0x12
+ 68c:	fb 89       	ldd	r31, Y+19	; 0x13
+ 68e:	20 81       	ld	r18, Z
+ 690:	30 e0       	ldi	r19, 0x00	; 0
+ 692:	82 17       	cp	r24, r18
+ 694:	93 07       	cpc	r25, r19
+ 696:	08 f4       	brcc	.+2      	; 0x69a <main+0x2c8>
+ 698:	4f 7e       	andi	r20, 0xEF	; 239
+			(output[select + 21] <= pwmCtr)	? (out |= _BV(5)) : (out &= ~_BV(5));
+ 69a:	ec 89       	ldd	r30, Y+20	; 0x14
+ 69c:	fd 89       	ldd	r31, Y+21	; 0x15
+ 69e:	20 81       	ld	r18, Z
+ 6a0:	30 e0       	ldi	r19, 0x00	; 0
+ 6a2:	82 17       	cp	r24, r18
+ 6a4:	93 07       	cpc	r25, r19
+ 6a6:	08 f4       	brcc	.+2      	; 0x6aa <main+0x2d8>
+ 6a8:	4f 7d       	andi	r20, 0xDF	; 223
+			(output[select + 22] <= pwmCtr)	? (out |= _BV(6)) : (out &= ~_BV(6));
+ 6aa:	ee 89       	ldd	r30, Y+22	; 0x16
+ 6ac:	ff 89       	ldd	r31, Y+23	; 0x17
+ 6ae:	20 81       	ld	r18, Z
+ 6b0:	30 e0       	ldi	r19, 0x00	; 0
+ 6b2:	82 17       	cp	r24, r18
+ 6b4:	93 07       	cpc	r25, r19
+ 6b6:	08 f4       	brcc	.+2      	; 0x6ba <main+0x2e8>
+ 6b8:	4f 7b       	andi	r20, 0xBF	; 191
+			(output[select + 23] <= pwmCtr)	? (out |= _BV(7)) : (out &= ~_BV(7));
+ 6ba:	e8 8d       	ldd	r30, Y+24	; 0x18
+ 6bc:	f9 8d       	ldd	r31, Y+25	; 0x19
+ 6be:	20 81       	ld	r18, Z
+ 6c0:	30 e0       	ldi	r19, 0x00	; 0
+ 6c2:	82 17       	cp	r24, r18
+ 6c4:	93 07       	cpc	r25, r19
+ 6c6:	08 f4       	brcc	.+2      	; 0x6ca <main+0x2f8>
+ 6c8:	4f 77       	andi	r20, 0x7F	; 127
+			SPDR = out;
+ 6ca:	40 93 b0 00 	sts	0x00B0, r20
+ 6ce:	2b 8d       	ldd	r18, Y+27	; 0x1b
+ 6d0:	3c 8d       	ldd	r19, Y+28	; 0x1c
+ 6d2:	ed 8d       	ldd	r30, Y+29	; 0x1d
+ 6d4:	fe 8d       	ldd	r31, Y+30	; 0x1e
+			while (!(SPSR & _BV(SPIF)));	// wait for the last SPI transmission to finish
+ 6d6:	80 91 b1 00 	lds	r24, 0x00B1
+ 6da:	87 ff       	sbrs	r24, 7
+ 6dc:	fc cf       	rjmp	.-8      	; 0x6d6 <main+0x304>
+ 6de:	3c 8f       	std	Y+28, r19	; 0x1c
+ 6e0:	2b 8f       	std	Y+27, r18	; 0x1b
+ 6e2:	fe 8f       	std	Y+30, r31	; 0x1e
+ 6e4:	ed 8f       	std	Y+29, r30	; 0x1d
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+		select = rowSelect * 24;
+		for (pwmCtr = 0; pwmCtr < 64; pwmCtr++) {
+ 6e6:	80 91 cb 01 	lds	r24, 0x01CB
+ 6ea:	90 91 cc 01 	lds	r25, 0x01CC
+ 6ee:	01 96       	adiw	r24, 0x01	; 1
+ 6f0:	90 93 cc 01 	sts	0x01CC, r25
+ 6f4:	80 93 cb 01 	sts	0x01CB, r24
+ 6f8:	80 34       	cpi	r24, 0x40	; 64
+ 6fa:	91 05       	cpc	r25, r1
+ 6fc:	08 f4       	brcc	.+2      	; 0x700 <main+0x32e>
+ 6fe:	15 cf       	rjmp	.-470    	; 0x52a <main+0x158>
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 700:	fa 8d       	ldd	r31, Y+26	; 0x1a
+ 702:	ff 5f       	subi	r31, 0xFF	; 255
+ 704:	fa 8f       	std	Y+26, r31	; 0x1a
+ 706:	2f 2f       	mov	r18, r31
+ 708:	79 ce       	rjmp	.-782    	; 0x3fc <main+0x2a>
+			break;
+			case RGB_CMD_GRN_DIM:
+				PWM_GRN = inbuf[1];
+			break;
+			case RGB_CMD_RED_DIM:
+				PWM_RED = inbuf[1];
+ 70a:	80 91 04 01 	lds	r24, 0x0104
+ 70e:	90 e0       	ldi	r25, 0x00	; 0
+ 710:	99 bd       	out	0x29, r25	; 41
+ 712:	88 bd       	out	0x28, r24	; 40
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 714:	1a 8e       	std	Y+26, r1	; 0x1a
+			case RGB_CMD_GRN_DIM:
+				PWM_GRN = inbuf[1];
+			break;
+			case RGB_CMD_RED_DIM:
+				PWM_RED = inbuf[1];
+			break;
+ 716:	85 ce       	rjmp	.-758    	; 0x422 <main+0x50>
+			(output[select + 14] <= pwmCtr)	? (out |= _BV(6)) : (out &= ~_BV(6));
+			(output[select + 15] <= pwmCtr)	? (out |= _BV(7)) : (out &= ~_BV(7));
+			SPDR = out;
+			// write out the red LEDs
+			out = 0xff;
+			(output[select + 16] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 718:	4c ef       	ldi	r20, 0xFC	; 252
+ 71a:	5e ef       	ldi	r21, 0xFE	; 254
+ 71c:	9e cf       	rjmp	.-196    	; 0x65a <main+0x288>
+			(output[select + 7] <= pwmCtr)	? (out |= _BV(7)) : (out &= ~_BV(7));
+			
+			SPDR = out;
+			// write out the green LEDs
+			out = 0xff;
+			(output[select + 8] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 71e:	4c ef       	ldi	r20, 0xFC	; 252
+ 720:	5e ef       	ldi	r21, 0xFE	; 254
+ 722:	56 cf       	rjmp	.-340    	; 0x5d0 <main+0x1fe>
+			PORTB |= _BV(1);					// drive the latch line high
+			SPDR = ~_BV(rowSelect);
+			PORTB &= ~_BV(1);					// clear the latch line
+			// write out the blue LEDs
+			out = 0xff;
+			(output[select + 0] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
+ 724:	4c ef       	ldi	r20, 0xFC	; 252
+ 726:	5e ef       	ldi	r21, 0xFE	; 254
+ 728:	12 cf       	rjmp	.-476    	; 0x54e <main+0x17c>
+		
+	init(inbuf, (uint8_t)BUFLEN, output, (uint8_t)OUTLEN, getAddress());
+	
+    while(1) {
+		doTick();
+        switch (cmd) {
+ 72a:	81 30       	cpi	r24, 0x01	; 1
+ 72c:	a1 f0       	breq	.+40     	; 0x756 <main+0x384>
+ 72e:	82 30       	cpi	r24, 0x02	; 2
+ 730:	09 f0       	breq	.+2      	; 0x734 <main+0x362>
+ 732:	76 ce       	rjmp	.-788    	; 0x420 <main+0x4e>
+			case RGB_CMD_24_GRB_DATA:
+				copyGRBBuf(inbuf, output);
+				cmd = 0;
+			break;
+			case RGB_CMD_3_RGB_DATA:
+				copy3BitBuf(inbuf, output);
+ 734:	6e ec       	ldi	r22, 0xCE	; 206
+ 736:	71 e0       	ldi	r23, 0x01	; 1
+ 738:	83 e0       	ldi	r24, 0x03	; 3
+ 73a:	91 e0       	ldi	r25, 0x01	; 1
+ 73c:	dc dd       	rcall	.-1096   	; 0x2f6 <copy3BitBuf>
+				cmd = 0;
+ 73e:	10 92 02 01 	sts	0x0102, r1
+ 742:	6e ce       	rjmp	.-804    	; 0x420 <main+0x4e>
+			break;
+			case RGB_CMD_BLU_DIM:
+				PWM_BLU = inbuf[1];
+			break;
+			case RGB_CMD_GRN_DIM:
+				PWM_GRN = inbuf[1];
+ 744:	80 91 04 01 	lds	r24, 0x0104
+ 748:	90 e0       	ldi	r25, 0x00	; 0
+ 74a:	90 93 c3 00 	sts	0x00C3, r25
+ 74e:	80 93 c2 00 	sts	0x00C2, r24
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 752:	1a 8e       	std	Y+26, r1	; 0x1a
+			case RGB_CMD_BLU_DIM:
+				PWM_BLU = inbuf[1];
+			break;
+			case RGB_CMD_GRN_DIM:
+				PWM_GRN = inbuf[1];
+			break;
+ 754:	66 ce       	rjmp	.-820    	; 0x422 <main+0x50>
+ 756:	4e ed       	ldi	r20, 0xDE	; 222
+ 758:	51 e0       	ldi	r21, 0x01	; 1
+ 75a:	66 e0       	ldi	r22, 0x06	; 6
+ 75c:	71 e0       	ldi	r23, 0x01	; 1
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 75e:	ca 01       	movw	r24, r20
+ 760:	fa 01       	movw	r30, r20
+ 762:	70 97       	sbiw	r30, 0x10	; 16
+ 764:	6f 01       	movw	r12, r30
+ 766:	fb 01       	movw	r30, r22
+ 768:	7a 01       	movw	r14, r20
+ 76a:	18 e0       	ldi	r17, 0x08	; 8
+ 76c:	9f 01       	movw	r18, r30
+ 76e:	22 50       	subi	r18, 0x02	; 2
+ 770:	31 09       	sbc	r19, r1
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+			out[(15-col) + (row * 24)]		= in[((col*3) + 1) + (row * 24)] >> 2;	// copy the green (order is flipped)
+ 772:	d9 01       	movw	r26, r18
+ 774:	2c 91       	ld	r18, X
+ 776:	26 95       	lsr	r18
+ 778:	26 95       	lsr	r18
+ 77a:	d7 01       	movw	r26, r14
+ 77c:	2e 93       	st	-X, r18
+ 77e:	7d 01       	movw	r14, r26
+			out[col + (row * 24)]			= in[((col*3) + 3) + (row * 24)] >> 2;	// copy the blue
+ 780:	20 81       	ld	r18, Z
+ 782:	26 95       	lsr	r18
+ 784:	26 95       	lsr	r18
+ 786:	d6 01       	movw	r26, r12
+ 788:	2d 93       	st	X+, r18
+ 78a:	6d 01       	movw	r12, r26
+ 78c:	9f 01       	movw	r18, r30
+ 78e:	21 50       	subi	r18, 0x01	; 1
+ 790:	31 09       	sbc	r19, r1
+			out[(col + 16) + (row * 24)]	= in[((col*3) + 2) + (row * 24)] >> 2;	// copy the red
+ 792:	d9 01       	movw	r26, r18
+ 794:	2c 91       	ld	r18, X
+ 796:	26 95       	lsr	r18
+ 798:	26 95       	lsr	r18
+ 79a:	dc 01       	movw	r26, r24
+ 79c:	2d 93       	st	X+, r18
+ 79e:	cd 01       	movw	r24, r26
+ 7a0:	11 50       	subi	r17, 0x01	; 1
+ 7a2:	33 96       	adiw	r30, 0x03	; 3
+void copyGRBBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+		for (col = 0; col < 8; col++) {
+ 7a4:	11 11       	cpse	r17, r1
+ 7a6:	e2 cf       	rjmp	.-60     	; 0x76c <main+0x39a>
+ 7a8:	48 5e       	subi	r20, 0xE8	; 232
+ 7aa:	5f 4f       	sbci	r21, 0xFF	; 255
+ 7ac:	68 5e       	subi	r22, 0xE8	; 232
+ 7ae:	7f 4f       	sbci	r23, 0xFF	; 255
+
+void copyGRBBuf(uint8_t * in, uint8_t * out)
+{
+	uint8_t row, col;
+	
+	for (row = 0; row < 8; row++) {
+ 7b0:	b2 e0       	ldi	r27, 0x02	; 2
+ 7b2:	4e 39       	cpi	r20, 0x9E	; 158
+ 7b4:	5b 07       	cpc	r21, r27
+ 7b6:	99 f6       	brne	.-90     	; 0x75e <main+0x38c>
+ 7b8:	c2 cf       	rjmp	.-124    	; 0x73e <main+0x36c>
+        switch (cmd) {
+			case RGB_CMD_ALL_DIM:
+				PWM_ALL = inbuf[1];
+			break;
+			case RGB_CMD_BLU_DIM:
+				PWM_BLU = inbuf[1];
+ 7ba:	80 91 04 01 	lds	r24, 0x0104
+ 7be:	90 e0       	ldi	r25, 0x00	; 0
+ 7c0:	90 93 c5 00 	sts	0x00C5, r25
+ 7c4:	80 93 c4 00 	sts	0x00C4, r24
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 7c8:	1a 8e       	std	Y+26, r1	; 0x1a
+			case RGB_CMD_ALL_DIM:
+				PWM_ALL = inbuf[1];
+			break;
+			case RGB_CMD_BLU_DIM:
+				PWM_BLU = inbuf[1];
+			break;
+ 7ca:	2b ce       	rjmp	.-938    	; 0x422 <main+0x50>
+	
+    while(1) {
+		doTick();
+        switch (cmd) {
+			case RGB_CMD_ALL_DIM:
+				PWM_ALL = inbuf[1];
+ 7cc:	80 91 04 01 	lds	r24, 0x0104
+ 7d0:	90 e0       	ldi	r25, 0x00	; 0
+ 7d2:	9b bd       	out	0x2b, r25	; 43
+ 7d4:	8a bd       	out	0x2a, r24	; 42
+void inline doTick(void) {
+	uint8_t select = 0;
+	uint8_t rowSelect = 0;
+	register uint8_t out;
+	
+	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
+ 7d6:	1a 8e       	std	Y+26, r1	; 0x1a
+    while(1) {
+		doTick();
+        switch (cmd) {
+			case RGB_CMD_ALL_DIM:
+				PWM_ALL = inbuf[1];
+			break;
+ 7d8:	24 ce       	rjmp	.-952    	; 0x422 <main+0x50>
+
+000007da <memset>:
+ 7da:	dc 01       	movw	r26, r24
+ 7dc:	01 c0       	rjmp	.+2      	; 0x7e0 <memset+0x6>
+ 7de:	6d 93       	st	X+, r22
+ 7e0:	41 50       	subi	r20, 0x01	; 1
+ 7e2:	50 40       	sbci	r21, 0x00	; 0
+ 7e4:	e0 f7       	brcc	.-8      	; 0x7de <memset+0x4>
+ 7e6:	08 95       	ret
+
+000007e8 <_exit>:
+ 7e8:	f8 94       	cli
+
+000007ea <__stop_program>:
+ 7ea:	ff cf       	rjmp	.-2      	; 0x7ea <__stop_program>
