@@ -7676,8 +7676,8 @@ Source: http://www.infineon.com/upload/Document/BSD223P_Rev1.3.pdf</description>
 </segment>
 <segment>
 <pinref part="ICSP" gate="G$1" pin="4"/>
-<label x="154.94" y="114.3" size="1.778" layer="95"/>
-<wire x1="175.26" y1="114.3" x2="154.94" y2="114.3" width="0.1524" layer="91"/>
+<label x="147.32" y="114.3" size="1.778" layer="95"/>
+<wire x1="175.26" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SCL/SCLK" class="0">
@@ -7688,8 +7688,8 @@ Source: http://www.infineon.com/upload/Document/BSD223P_Rev1.3.pdf</description>
 </segment>
 <segment>
 <pinref part="ICSP" gate="G$1" pin="3"/>
-<label x="154.94" y="111.76" size="1.778" layer="95"/>
-<wire x1="175.26" y1="111.76" x2="154.94" y2="111.76" width="0.1524" layer="91"/>
+<label x="147.32" y="111.76" size="1.778" layer="95"/>
+<wire x1="175.26" y1="111.76" x2="147.32" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ADD5/SER" class="0">
@@ -7734,9 +7734,9 @@ Source: http://www.infineon.com/upload/Document/BSD223P_Rev1.3.pdf</description>
 <wire x1="101.6" y1="114.3" x2="121.92" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="154.94" y1="116.84" x2="175.26" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="116.84" x2="175.26" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="ICSP" gate="G$1" pin="1"/>
-<label x="154.94" y="116.84" size="1.778" layer="95"/>
+<label x="147.32" y="116.84" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ADD4/TOT" class="0">

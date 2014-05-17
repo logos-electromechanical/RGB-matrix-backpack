@@ -119,8 +119,8 @@ uint8_t getAddress (void) {
 	
 	// turn on the pull-ups for all address lines in 
 	// order to force a default address
-	PUEA = 0xa5;
-	PUEB = 0x05;
+	//PUEA = 0xa5;
+	//PUEB = 0x05;
 	
 	// read the input ports
 	//pa = PINA;
@@ -132,11 +132,11 @@ uint8_t getAddress (void) {
 	if (PINA & _BV(0)) result += 0x08;	// address bit 2
 	if (PINB & _BV(2)) result += 0x10;	// address bit 3
 	if (PINA & _BV(2)) result += 0x20;	// address bit 4
-	if (PINB & _BV(0)) result += 0x40;	// address bit 5
+	if (PINA & _BV(1)) result += 0x40;	// address bit 5
 	
 	// turn off the pull-ups
-	PUEA = 0;
-	PUEB = 0;
+	//PUEA = 0;
+	//PUEB = 0;
 	
 	return result;
 }
@@ -144,7 +144,7 @@ uint8_t getAddress (void) {
 void init (uint8_t * in, uint8_t inlen, uint8_t * out, uint8_t outlen, uint8_t address) {
 	
 	DDRA = 0xaf;	// set everything except the TWI pins to output 
-	DDRB = 0x07;	// set everything to outputs
+	DDRB = 0x04;	// set everything to outputs except clock lines & reset
 	
 	// set up PWM outputs
 	TCCR1A = _BV(COM1A0) | _BV(COM1A1) | _BV(COM1B0) | _BV(COM1B1) | _BV(WGM10);
@@ -170,6 +170,9 @@ void init (uint8_t * in, uint8_t inlen, uint8_t * out, uint8_t outlen, uint8_t a
 	SPCR = _BV(SPE) | _BV(MSTR);	// turn on the SPI bus in master mode
 	SPSR = _BV(SPI2X);				// turn it up to max speed (clk/2)
 	REMAP = _BV(SPIMAP);			// remap the SPI pins to alternates
+	
+	DDRA = 0xaf;	// set everything except the TWI pins to output (makes sure PA0 is an output)
+	PUEA |= _BV(4) | _BV(6);
 	
 	// turn on interrupts and away we go
 	sei();
@@ -216,10 +219,17 @@ void inline doTick(void) {
 	for (rowSelect = 0; rowSelect < 8; rowSelect++) {
 		select = rowSelect * 24;
 		for (pwmCtr = 0; pwmCtr < 64; pwmCtr++) {
-			PORTB |= _BV(1);					// drive the latch line high
-			SPDR = ~_BV(rowSelect);
-			PORTB &= ~_BV(1);					// clear the latch line
+			// Since we're overloading what would otherwise be the MISO line to be the latch line, we need to disable & re-enable SPI every cycle
+			SPCR = 0;
+			PORTA &= ~_BV(0);	
+			PORTA |= _BV(0);
+			SPCR = _BV(SPE) | _BV(MSTR);	// turn on the SPI bus in master mode
+			
+			//PORTA |= _BV(0);					// drive the latch line high
+			//SPDR = ~_BV(rowSelect);
+			//PORTA &= ~_BV(0);					// clear the latch line
 			// write out the blue LEDs
+			SPDR = ~_BV(rowSelect);
 			out = 0xff;
 			(output[select + 0] <= pwmCtr)	? (out |= _BV(0)) : (out &= ~_BV(0));
 			(output[select + 1] <= pwmCtr)	? (out |= _BV(1)) : (out &= ~_BV(1));
